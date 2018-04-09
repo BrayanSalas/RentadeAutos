@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="markintoch.rentcar.SearchActivity">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="14dp"
+        android:text="Busqueda de un Auto"
+        android:textSize="18dp" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true"
+        app:srcCompat="@drawable/searchcar" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView"
+        android:layout_alignStart="@+id/textView"
+        android:layout_below="@+id/imageView"
+        android:layout_marginTop="30dp"
+        android:text="Recoger vehículo en:"
+        android:textSize="14dp" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="170dp"
+        android:layout_height="20dp"
+        android:layout_alignTop="@+id/textView2"
+        android:layout_marginLeft="11dp"
+        android:layout_marginStart="11dp"
+        android:layout_toEndOf="@+id/recogerFecha"
+        android:layout_toRightOf="@+id/recogerFecha"
+        android:text="16dp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView2"
+        android:layout_alignStart="@+id/textView2"
+        android:layout_below="@+id/spinner"
+        android:layout_marginLeft="13dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="13dp"
+        android:text="Fecha:"
+        android:textSize="14dp" />
+
+    <EditText
+        android:id="@+id/recogerFecha"
+        android:layout_width="85dp"
+        android:layout_height="40dp"
+        android:layout_alignBaseline="@+id/textView3"
+        android:layout_alignBottom="@+id/textView3"
+        android:layout_marginLeft="13dp"
+        android:layout_marginStart="13dp"
+        android:layout_toEndOf="@+id/textView3"
+        android:layout_toRightOf="@+id/textView3"
+        android:ems="10"
+        android:hint="dd/mm/yy"
+        android:inputType="textPersonName"
+        android:textSize="14dp"
+        android:textAlignment="center"/>
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView3"
+        android:layout_alignStart="@+id/textView3"
+        android:layout_below="@+id/recogerFecha"
+        android:layout_marginTop="24dp"
+        android:text="Hora:"
+        android:textSize="14dp" />
+
+    <EditText
+        android:id="@+id/recogerHora"
+        android:layout_width="70dp"
+        android:layout_height="40dp"
+        android:layout_alignBaseline="@+id/textView4"
+        android:layout_alignBottom="@+id/textView4"
+        android:layout_alignLeft="@+id/recogerFecha"
+        android:layout_alignStart="@+id/recogerFecha"
+        android:ems="10"
+        android:hint="hh:mm"
+        android:inputType="textPersonName"
+        android:textAlignment="center"
+        android:textSize="14dp" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView4"
+        android:layout_alignStart="@+id/textView4"
+        android:layout_below="@+id/textView7"
+        android:layout_marginTop="16dp"
+        android:text="Fecha:" />
+
+    <EditText
+        android:id="@+id/devolucionFecha"
+        android:layout_width="85dp"
+        android:layout_height="40dp"
+        android:layout_alignBaseline="@+id/textView6"
+        android:layout_alignBottom="@+id/textView6"
+        android:layout_alignLeft="@+id/recogerHora"
+        android:layout_alignStart="@+id/recogerHora"
+        android:ems="10"
+        android:hint="dd/mm/yy"
+        android:inputType="textPersonName"
+        android:textAlignment="center"
+        android:textSize="14dp" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView2"
+        android:layout_alignStart="@+id/textView2"
+        android:layout_below="@+id/recogerHora"
+        android:layout_marginTop="22dp"
+        android:text="Devolución:" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView6"
+        android:layout_alignStart="@+id/textView6"
+        android:layout_below="@+id/devolucionFecha"
+        android:layout_marginTop="26dp"
+        android:text="Hora:" />
+
+    <EditText
+        android:id="@+id/devolucionHora"
+        android:layout_width="70dp"
+        android:layout_height="40dp"
+        android:layout_alignBaseline="@+id/textView8"
+        android:layout_alignBottom="@+id/textView8"
+        android:layout_alignLeft="@+id/devolucionFecha"
+        android:layout_alignStart="@+id/devolucionFecha"
+        android:ems="10"
+        android:hint="hh:mm"
+        android:inputType="textPersonName"
+        android:textAlignment="center"
+        android:textSize="14dp" />
+
+    <Button
+        android:id="@+id/buttonBuscar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/devolucionFecha"
+        android:layout_toEndOf="@+id/imageView"
+        android:layout_toRightOf="@+id/imageView"
+        android:text="Buscar" />
+
+</RelativeLayout>

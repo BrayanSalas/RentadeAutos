@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://C:\Users\braya\AndroidStudioProjects\RentCar-master\RentCar.iml" filepath="C:\Users\braya\AndroidStudioProjects\RentCar-master\RentCar.iml" />
+      <module fileurl="file://C:\Users\maste\Desktop\RentCars\RentCar-master.iml" filepath="C:\Users\maste\Desktop\RentCars\RentCar-master.iml" />
+      <module fileurl="file://$PROJECT_DIR$/RentCar2-master.iml" filepath="$PROJECT_DIR$/RentCar2-master.iml" />
+      <module fileurl="file://C:\Users\braya\AndroidStudioProjects\RentCar2-master\RentCars.iml" filepath="C:\Users\braya\AndroidStudioProjects\RentCar2-master\RentCars.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://C:\Users\maste\Desktop\RentCars\app\app.iml" filepath="C:\Users\maste\Desktop\RentCars\app\app.iml" />
+    </modules>
+  </component>
+</project>

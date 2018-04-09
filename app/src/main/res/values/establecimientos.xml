@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="establecimientos">
+        <item>Escobedo</item>
+        <item>San Nicolas</item>
+        <item>Apodaca</item>
+        <item>Santa Catarina</item>
+    </string-array>
+
+</resources>

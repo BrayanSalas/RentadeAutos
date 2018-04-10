@@ -6,16 +6,20 @@ public class Buscar {
     public String horaInicio;
     public String horaFin;
     public String establecimiento;
+    public String marca;
+    public String precio;
 
     public Buscar() {
     }
 
-    public Buscar(String fechaInicio, String fechaDevolucion, String horaInicio, String horaFin, String establecimiento) {
+    public Buscar(String fechaInicio, String fechaDevolucion, String horaInicio, String horaFin, String establecimiento, String marca, String precio) {
         this.fechaInicio = fechaInicio;
         this.fechaDevolucion = fechaDevolucion;
         this.horaInicio = horaInicio;
         this.horaFin = horaFin;
         this.establecimiento = establecimiento;
+        this.marca = marca;
+        this.precio = precio;
     }
 
     public String getFechaInicio() {

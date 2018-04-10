@@ -27,11 +27,16 @@ public class Adaptador extends RecyclerView.Adapter<Adaptador.CarrosViewHolder> 
 
     private List<Carro> carros;
     Context con;
+    String newfechaInicio, newfechaDevolucion, newhoraInicio, newhoraDevolucion, establecimiento;
 
-    public Adaptador(List<Carro> carros, Context con){
-        this.con = con;
+    public Adaptador(List<Carro> carros, Context con, String newfechaInicio, String newfechaDevolucion, String newhoraInicio, String newhoraDevolucion, String establecimiento) {
         this.carros = carros;
-
+        this.con = con;
+        this.newfechaInicio = newfechaInicio;
+        this.newfechaDevolucion = newfechaDevolucion;
+        this.newhoraInicio = newhoraInicio;
+        this.newhoraDevolucion = newhoraDevolucion;
+        this.establecimiento = establecimiento;
     }
 
     @Override
@@ -78,6 +83,11 @@ public class Adaptador extends RecyclerView.Adapter<Adaptador.CarrosViewHolder> 
             intent.putExtra("capacidad", carroObj.getCapacidad());
             intent.putExtra("descripcionAdicional", carroObj.getDescripcionAdicional());
             intent.putExtra("precio", carroObj.getPrecio());
+            intent.putExtra("newfechaInicio", newfechaInicio);
+            intent.putExtra("newfechaDevolucion", newfechaDevolucion);
+            intent.putExtra("newhoraInicio", newhoraInicio);
+            intent.putExtra("newhoraDevolucion", newhoraDevolucion);
+            intent.putExtra("establecimiento", establecimiento);
             con.startActivity(intent);
 
         }

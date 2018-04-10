@@ -35,6 +35,11 @@ public class RecyclerActivity extends AppCompatActivity {
         con = this;
         //////////////////////////////////////////////////////////
         int pos = getIntent().getExtras().getInt("position");
+        String newfechaInicio = getIntent().getExtras().getString("newfechaInicio");
+        String newfechaDevolucion = getIntent().getExtras().getString("newfechaDevolucion");
+        String newhoraInicio = getIntent().getExtras().getString("newhoraInicio");
+        String newhoraDevolucion = getIntent().getExtras().getString("newhoraDevolucion");
+        String establecimiento = getIntent().getExtras().getString("establecimiento");
         if(pos == 0){
             referencia = database.getReference("establecimientos/escobedo");
         }else if(pos == 1){
@@ -51,7 +56,7 @@ public class RecyclerActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager llm = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(llm);
-        adaptador = new Adaptador(carros, con);
+        adaptador = new Adaptador(carros, con, newfechaInicio, newfechaDevolucion, newhoraInicio, newhoraDevolucion, establecimiento);
         recyclerView.setAdapter(adaptador); //Se usar el adaptador en el RecyclerView
         referencia.addValueEventListener(new ValueEventListener() {
             @Override

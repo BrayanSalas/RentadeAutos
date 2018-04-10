@@ -74,6 +74,11 @@ public class SearchActivity extends AppCompatActivity implements AdapterView.OnI
 
                     Intent intent = new Intent(SearchActivity.this, RecyclerActivity.class);
                     intent.putExtra("position", position);
+                    intent.putExtra("newfechaInicio", newfechaInicio);
+                    intent.putExtra("newfechaDevolucion", newfechaDevolucion);
+                    intent.putExtra("newhoraInicio", newhoraInicio);
+                    intent.putExtra("newhoraDevolucion", newhoraDevolucion);
+                    intent.putExtra("establecimiento", estab[position]);
                     startActivity(intent);
 
                 }

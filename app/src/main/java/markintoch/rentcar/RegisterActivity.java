@@ -47,9 +47,9 @@ public class RegisterActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             Usuario newUser = new Usuario(newNombre, newEmail, newPassword, newUsuario);
-                            usuarioDatabase.child(newEmail).setValue(newUser); //En la referencia (o tabla) usuarios hace un push de los datos del objeto Usuario
+                            usuarioDatabase.child(newNombre).setValue(newUser); //En la referencia (o tabla) usuarios hace un push de los datos del objeto Usuario
                             Toast.makeText(getApplicationContext(), "Usuario registrado existosamente", Toast.LENGTH_SHORT).show();
-                            Intent i = new Intent(RegisterActivity.this, LoginActivity.class);
+                            Intent i = new Intent(RegisterActivity.this, SearchActivity.class);
                             startActivity(i);
                         } else {
                             if (task.getException().getMessage() == "The email address is already in use by another account.") {

@@ -11,23 +11,41 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
+import java.util.List;
+
 import markintoch.rentcar.Objetos.Buscar;
+import markintoch.rentcar.Objetos.Carro;
+import markintoch.rentcar.Objetos.Usuario;
+
 
 public class DetallesActivity extends AppCompatActivity {
     private Context context;
+    private String email;
+    String username;
     TextView textViewTitleD, textViewDescription;
     ImageView imageViewPosterD;
     Button elegirCarro;
     FirebaseDatabase rentCar = FirebaseDatabase.getInstance();//Haciendo conexion con nuestra Database
+    DatabaseReference usuarioDatabase = rentCar.getReference("usuarios"); //Similar a una tabla en SQL
+    DatabaseReference referencia;
+
+    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalles);
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
 
         textViewTitleD = findViewById(R.id.textViewTitleD);
         textViewDescription = findViewById(R.id.textViewDescription);
@@ -35,7 +53,7 @@ public class DetallesActivity extends AppCompatActivity {
         elegirCarro = findViewById(R.id.elegirCarro);
 
 
-
+        //CARACTERISTICAS DEL AUTO
         final String marca = getIntent().getExtras().getString("marca");
         String poster = getIntent().getExtras().getString("poster");
         String puertas = getIntent().getExtras().getString("puertas");
@@ -47,21 +65,52 @@ public class DetallesActivity extends AppCompatActivity {
         String descripcionAdicional = getIntent().getExtras().getString("descripcionAdicional");
         final String precio = getIntent().getExtras().getString("precio");
 
+        //DATOS DEL PETICION
+        final String newfechaInicio = getIntent().getExtras().getString("newfechaInicio");
+        final String newfechaDevolucion = getIntent().getExtras().getString("newfechaDevolucion");
+        final String newhoraInicio = getIntent().getExtras().getString("newhoraInicio");
+        final String newhoraDevolucion = getIntent().getExtras().getString("newhoraDevolucion");
+        final String establecimiento = getIntent().getExtras().getString("establecimiento");
+
 
 
         textViewTitleD.setText(marca);
-        textViewDescription.setText("Puertas: "+puertas+"\n"+"Color: "+color+"\n"+"Modelo: "+modelo+"\n"+"AC: "+ac+"\n"+"Transmision: "+transmision+"\n"+"Capacidad: "+capacidad+"\n"+"Descripcion Adicional: "+descripcionAdicional+"\n"+"Precio: $"+precio);
+        textViewDescription.setText("Descripcion: "+descripcionAdicional+"\n"+"Puertas: "+puertas+"                        "+"Color: "+color+"\n"+"Modelo: "+modelo+"                  "+"AC: "+ac+"\n"+"Transmision: "+transmision+"     "+"Capacidad: "+capacidad+"\n"+"Precio: $"+precio);
         Picasso.with(context).load(poster).into(imageViewPosterD);
 
         elegirCarro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                try{
                 AlertDialog.Builder builder = new AlertDialog.Builder(DetallesActivity.this);
-                builder.setMessage("Desea elegir el coche "+marca+"\n"+"por el precio de: $"+precio).setTitle("Elección del Carro");
+                builder.setMessage("Desea elegir el coche " + marca + "\n" + "por el precio de: $" + precio).setTitle("Elección del Carro");
                 builder.setPositiveButton("Continuar", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        Toast.makeText(DetallesActivity.this, "Se ha hecho el pedido de manera exitosa", Toast.LENGTH_SHORT).show();
+                        //TRAE TODOS LOS USUARIOS
+                        referencia = database.getReference("usuarios");
+                        referencia.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                for (DataSnapshot Q : dataSnapshot.getChildren()) {
+                                    Usuario usuario = Q.getValue(Usuario.class);
+                                    if (user != null) {
+                                        email = user.getEmail();
+                                    }
+                                    if (usuario.getCorreo().equals(email)) {
+                                        username = Q.getKey();
+                                        DatabaseReference rentarCarr = rentCar.getReference("usuarios/" + username);
+                                        Buscar peticion = new Buscar(newfechaInicio, newfechaDevolucion, newhoraInicio, newhoraDevolucion, establecimiento, marca, precio);
+                                        rentarCarr.child("peticion").setValue(peticion);
+                                        Toast.makeText(DetallesActivity.this, "Se ha hecho el pedido de manera exitosa", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+                                Toast.makeText(DetallesActivity.this, "No se ha podido hacer", Toast.LENGTH_SHORT).show();
+                            }
+                        });
                     }
                 });
                 builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
@@ -72,7 +121,10 @@ public class DetallesActivity extends AppCompatActivity {
                 });
                 AlertDialog dialog = builder.create();
                 dialog.show();
-            }
+            }catch(Exception e){
+                    Toast.makeText(context, "Existe un error del email en la base de datos, revise con soporte tecnico", Toast.LENGTH_SHORT).show();
+                }
+            }//fin del onclick
         });
     }
     /*private List<Carro> getAllCarro(final String marca, final String poster, final String puertas, final String color, final String modelo, final String ac, final String transmision, final String capacidad, final String descripcionAdicional, final String precio){

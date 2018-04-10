@@ -47,7 +47,7 @@ public class RegisterActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             Usuario newUser = new Usuario(newNombre, newEmail, newPassword, newUsuario);
-                            usuarioDatabase.child(newUsuario).setValue(newUser); //En la referencia (o tabla) usuarios hace un push de los datos del objeto Usuario
+                            usuarioDatabase.child(newEmail).setValue(newUser); //En la referencia (o tabla) usuarios hace un push de los datos del objeto Usuario
                             Toast.makeText(getApplicationContext(), "Usuario registrado existosamente", Toast.LENGTH_SHORT).show();
                             Intent i = new Intent(RegisterActivity.this, LoginActivity.class);
                             startActivity(i);

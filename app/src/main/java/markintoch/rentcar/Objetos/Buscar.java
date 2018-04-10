@@ -1,4 +1,4 @@
-package markintoch.rentcar;
+package markintoch.rentcar.Objetos;
 
 public class Buscar {
     public String fechaInicio;

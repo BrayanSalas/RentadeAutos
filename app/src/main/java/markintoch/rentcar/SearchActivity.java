@@ -17,6 +17,9 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import java.io.Serializable;
 
+import markintoch.rentcar.Objetos.Buscar;
+import markintoch.rentcar.Recycler.RecyclerActivity;
+
 @SuppressWarnings("serial")
 public class SearchActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener, Serializable {
     private FirebaseAuth mAuth;
@@ -49,6 +52,7 @@ public class SearchActivity extends AppCompatActivity implements AdapterView.OnI
         horaInicio = findViewById(R.id.recogerHora);
         horaDevolucion = findViewById(R.id.devolucionHora);
         buttonBuscar = findViewById(R.id.buttonBuscar);
+
 
         buttonBuscar.setOnClickListener(new View.OnClickListener() {
             @Override

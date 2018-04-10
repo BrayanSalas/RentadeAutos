@@ -19,7 +19,7 @@
         <activity android:name=".RegisterActivity" />
         <activity android:name=".SearchActivity" />
         <activity
-            android:name=".RecyclerActivity"
+            android:name=".Recycler.RecyclerActivity"
             android:label="@string/title_activity_recycler"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity

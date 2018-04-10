@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,9 +16,13 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import markintoch.rentcar.Objetos.Usuario;
+
 public class RegisterActivity extends AppCompatActivity {
     EditText nombre, correo, usuario, password;
     Button terminarRegistro;
+    FirebaseDatabase rentCar = FirebaseDatabase.getInstance();//Haciendo conexion con nuestra Database
+    DatabaseReference usuarioDatabase = rentCar.getReference("usuarios"); //Similar a una tabla en SQL
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,8 +32,6 @@ public class RegisterActivity extends AppCompatActivity {
         correo = (EditText) findViewById(R.id.correo);
         usuario = (EditText) findViewById(R.id.usuario);
         password = (EditText) findViewById(R.id.passwordRegister);
-        final FirebaseDatabase rentCar = FirebaseDatabase.getInstance();//Haciendo conexion con nuestra Database
-        final DatabaseReference usuarioDatabase = rentCar.getReference("usuarios"); //Similar a una tabla en SQL
         terminarRegistro = (Button) findViewById(R.id.BotonRegisterComplete);
         terminarRegistro.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,7 +47,7 @@ public class RegisterActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             Usuario newUser = new Usuario(newNombre, newEmail, newPassword, newUsuario);
-                            usuarioDatabase.push().setValue(newUser); //En la referencia (o tabla) usuarios hace un push de los datos del objeto Usuario
+                            usuarioDatabase.child(newUsuario).setValue(newUser); //En la referencia (o tabla) usuarios hace un push de los datos del objeto Usuario
                             Toast.makeText(getApplicationContext(), "Usuario registrado existosamente", Toast.LENGTH_SHORT).show();
                             Intent i = new Intent(RegisterActivity.this, LoginActivity.class);
                             startActivity(i);

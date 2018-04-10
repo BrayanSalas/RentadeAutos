@@ -11,13 +11,18 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
+
+import markintoch.rentcar.Objetos.Buscar;
 
 public class DetallesActivity extends AppCompatActivity {
     private Context context;
     TextView textViewTitleD, textViewDescription;
     ImageView imageViewPosterD;
     Button elegirCarro;
+    FirebaseDatabase rentCar = FirebaseDatabase.getInstance();//Haciendo conexion con nuestra Database
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +33,8 @@ public class DetallesActivity extends AppCompatActivity {
         textViewDescription = findViewById(R.id.textViewDescription);
         imageViewPosterD = findViewById(R.id.imageViewPosterD);
         elegirCarro = findViewById(R.id.elegirCarro);
+
+
 
         final String marca = getIntent().getExtras().getString("marca");
         String poster = getIntent().getExtras().getString("poster");
@@ -54,7 +61,6 @@ public class DetallesActivity extends AppCompatActivity {
                 builder.setMessage("Desea elegir el coche "+marca+"\n"+"por el precio de: $"+precio).setTitle("Elección del Carro");
                 builder.setPositiveButton("Continuar", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        //Codigo de firebase
                         Toast.makeText(DetallesActivity.this, "Se ha hecho el pedido de manera exitosa", Toast.LENGTH_SHORT).show();
                     }
                 });

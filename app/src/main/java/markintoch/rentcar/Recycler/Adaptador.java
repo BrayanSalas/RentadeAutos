@@ -1,4 +1,4 @@
-package markintoch.rentcar;
+package markintoch.rentcar.Recycler;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,13 +11,19 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import java.io.Serializable;
 import java.util.List;
+
+import markintoch.rentcar.DetallesActivity;
+import markintoch.rentcar.Objetos.Carro;
+import markintoch.rentcar.R;
 
 /**
  * Created by maste on 09/04/2018.
  */
 
-public class Adaptador extends RecyclerView.Adapter<Adaptador.CarrosViewHolder> {
+public class Adaptador extends RecyclerView.Adapter<Adaptador.CarrosViewHolder> implements Serializable{
+
 
     private List<Carro> carros;
     Context con;
@@ -73,6 +79,7 @@ public class Adaptador extends RecyclerView.Adapter<Adaptador.CarrosViewHolder> 
             intent.putExtra("descripcionAdicional", carroObj.getDescripcionAdicional());
             intent.putExtra("precio", carroObj.getPrecio());
             con.startActivity(intent);
+
         }
     }
 }

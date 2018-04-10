@@ -34,8 +34,7 @@ public class DetallesActivity extends AppCompatActivity {
     TextView textViewTitleD, textViewDescription;
     ImageView imageViewPosterD;
     Button elegirCarro;
-    FirebaseDatabase rentCar = FirebaseDatabase.getInstance();//Haciendo conexion con nuestra Database
-    DatabaseReference usuarioDatabase = rentCar.getReference("usuarios"); //Similar a una tabla en SQL
+    FirebaseDatabase rentCar = FirebaseDatabase.getInstance();
     DatabaseReference referencia;
 
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -55,7 +54,7 @@ public class DetallesActivity extends AppCompatActivity {
 
         //CARACTERISTICAS DEL AUTO
         final String marca = getIntent().getExtras().getString("marca");
-        String poster = getIntent().getExtras().getString("poster");
+        final String poster = getIntent().getExtras().getString("poster");
         String puertas = getIntent().getExtras().getString("puertas");
         String color = getIntent().getExtras().getString("color");
         String modelo = getIntent().getExtras().getString("modelo");
@@ -99,7 +98,7 @@ public class DetallesActivity extends AppCompatActivity {
                                     if (usuario.getCorreo().equals(email)) {
                                         username = Q.getKey();
                                         DatabaseReference rentarCarr = rentCar.getReference("usuarios/" + username);
-                                        Buscar peticion = new Buscar(newfechaInicio, newfechaDevolucion, newhoraInicio, newhoraDevolucion, establecimiento, marca, precio);
+                                        Buscar peticion = new Buscar(newfechaInicio, newfechaDevolucion, newhoraInicio, newhoraDevolucion, establecimiento, marca, precio, poster);
                                         rentarCarr.child("peticion").setValue(peticion);
                                         Toast.makeText(DetallesActivity.this, "Se ha hecho el pedido de manera exitosa", Toast.LENGTH_SHORT).show();
                                     }
@@ -127,10 +126,4 @@ public class DetallesActivity extends AppCompatActivity {
             }//fin del onclick
         });
     }
-    /*private List<Carro> getAllCarro(final String marca, final String poster, final String puertas, final String color, final String modelo, final String ac, final String transmision, final String capacidad, final String descripcionAdicional, final String precio){
-        return new ArrayList<Carro>(){{
-            add(new Carro(marca, poster, puertas, color, modelo, ac, transmision, capacidad, descripcionAdicional, precio));
-
-        }};
-    }*/
 }

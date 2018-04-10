@@ -105,6 +105,8 @@ public class SearchActivity extends AppCompatActivity implements AdapterView.OnI
                 finish();
                 return true;
 
+
+
             default:
                 return super.onOptionsItemSelected(item);
         }

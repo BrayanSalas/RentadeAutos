@@ -7,4 +7,7 @@
         android:title="SignOut"
         android:icon="@drawable/apagar"
         app:showAsAction="always" />
+
+
+
 </menu>

@@ -25,7 +25,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Correo"
-                android:maxLines="1"/>
+                android:maxLines="1"
+                android:singleLine="true"/>
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -37,6 +38,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Nombre"
+                android:singleLine="true"
                 android:maxLines="1" />
 
         </android.support.design.widget.TextInputLayout>
@@ -50,6 +52,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Usuario"
+                android:singleLine="true"
                 android:maxLines="1" />
 
         </android.support.design.widget.TextInputLayout>
@@ -64,6 +67,7 @@
                 android:layout_height="wrap_content"
                 android:hint="Contraseña"
                 android:inputType="textPassword"
+                android:singleLine="true"
                 android:maxLines="1" />
 
         </android.support.design.widget.TextInputLayout>

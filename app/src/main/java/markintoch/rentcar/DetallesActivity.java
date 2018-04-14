@@ -2,6 +2,7 @@ package markintoch.rentcar;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -25,6 +26,7 @@ import java.util.List;
 import markintoch.rentcar.Objetos.Buscar;
 import markintoch.rentcar.Objetos.Carro;
 import markintoch.rentcar.Objetos.Usuario;
+import markintoch.rentcar.Recycler.RecyclerActivity;
 
 
 public class DetallesActivity extends AppCompatActivity {
@@ -103,6 +105,10 @@ public class DetallesActivity extends AppCompatActivity {
                                         Toast.makeText(DetallesActivity.this, "Se ha hecho el pedido de manera exitosa", Toast.LENGTH_SHORT).show();
                                     }
                                 }
+
+                                Intent i = new Intent(DetallesActivity.this, RentadosActivity.class);
+                                startActivity(i);
+                                android.os.Process.killProcess(android.os.Process.myPid());
                             }
 
                             @Override

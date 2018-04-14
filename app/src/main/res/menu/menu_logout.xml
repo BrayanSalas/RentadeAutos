@@ -8,6 +8,9 @@
         android:icon="@drawable/apagar"
         app:showAsAction="always" />
 
-
+    <item android:id="@+id/carrosRentados"
+        android:title="SignOut"
+        android:icon="@drawable/car"
+        app:showAsAction="always" />
 
 </menu>

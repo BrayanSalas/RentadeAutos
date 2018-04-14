@@ -41,7 +41,7 @@ public class LoginActivity extends AppCompatActivity {
                 if(usuario != null){
                     AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
                     builder.setMessage("Desea continuar como "+usuario.getEmail()).setTitle("Inicio de sesión");
-                    builder.setPositiveButton("Esta bien", new DialogInterface.OnClickListener() {
+                    builder.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             Intent i = new Intent(LoginActivity.this,SearchActivity.class);
                             startActivity(i);
@@ -77,6 +77,7 @@ public class LoginActivity extends AppCompatActivity {
                                 Toast.makeText(getApplicationContext(),"Sesion iniciada correctamente",Toast.LENGTH_SHORT).show();
                                 Intent i = new Intent(LoginActivity.this,SearchActivity.class);
                                 startActivity(i);
+                                finish();
                             }else{ //En caso contrario, regresara un false | Con la funcion .getMessage() se puede acceder al mensaje del error
                                 Toast.makeText(getApplicationContext(),task.getException().getMessage(),Toast.LENGTH_SHORT).show();
                             }

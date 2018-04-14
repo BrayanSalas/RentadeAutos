@@ -58,7 +58,7 @@
         android:layout_below="@+id/spinner"
         android:layout_marginLeft="13dp"
         android:layout_marginStart="13dp"
-        android:layout_marginTop="13dp"
+        android:layout_marginTop="20dp"
         android:text="Fecha:"
         android:textSize="14dp" />
 
@@ -72,6 +72,7 @@
         android:layout_marginStart="13dp"
         android:layout_toEndOf="@+id/textView3"
         android:layout_toRightOf="@+id/textView3"
+        android:focusable="false"
         android:ems="10"
         android:hint="dd/mm/yy"
         android:inputType="textPersonName"
@@ -97,6 +98,7 @@
         android:layout_alignBottom="@+id/textView4"
         android:layout_alignLeft="@+id/recogerFecha"
         android:layout_alignStart="@+id/recogerFecha"
+        android:focusable="false"
         android:ems="10"
         android:hint="hh:mm"
         android:inputType="textPersonName"
@@ -120,6 +122,7 @@
         android:layout_alignBaseline="@+id/textView6"
         android:layout_alignBottom="@+id/textView6"
         android:layout_alignLeft="@+id/recogerHora"
+        android:focusable="false"
         android:layout_alignStart="@+id/recogerHora"
         android:ems="10"
         android:hint="dd/mm/yy"
@@ -155,6 +158,7 @@
         android:layout_alignBottom="@+id/textView8"
         android:layout_alignLeft="@+id/devolucionFecha"
         android:layout_alignStart="@+id/devolucionFecha"
+        android:focusable="false"
         android:ems="10"
         android:hint="hh:mm"
         android:inputType="textPersonName"
@@ -169,5 +173,45 @@
         android:layout_toEndOf="@+id/imageView"
         android:layout_toRightOf="@+id/imageView"
         android:text="Buscar" />
+
+    <ImageButton
+        android:id="@+id/ibtnFechaInicial"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/recogerFecha"
+        android:layout_toEndOf="@+id/textView"
+        android:layout_toRightOf="@+id/textView"
+        android:background="#a67282ff"
+        app:srcCompat="@drawable/date" />
+
+    <ImageButton
+        android:id="@+id/ibtnHoraInicial"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/recogerHora"
+        android:layout_toEndOf="@+id/recogerFecha"
+        android:layout_toRightOf="@+id/recogerFecha"
+        android:background="#a67282ff"
+        app:srcCompat="@drawable/time" />
+
+    <ImageButton
+        android:id="@+id/ibtnFechaFin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/spinner"
+        android:layout_alignStart="@+id/spinner"
+        android:layout_alignTop="@+id/devolucionFecha"
+        android:background="#a67282ff"
+        app:srcCompat="@drawable/date" />
+
+    <ImageButton
+        android:id="@+id/ibtnHoraFin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/devolucionHora"
+        android:layout_toEndOf="@+id/devolucionFecha"
+        android:layout_toRightOf="@+id/devolucionFecha"
+        android:background="#a67282ff"
+        app:srcCompat="@drawable/time" />
 
 </RelativeLayout>

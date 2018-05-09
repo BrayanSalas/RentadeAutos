@@ -91,7 +91,7 @@ public class SearchActivity extends AppCompatActivity implements AdapterView.OnI
                 boolean camposLlenos = validate(new EditText[]{fechaInicio, fechaDevolucion, horaInicio, horaDevolucion});
 
                 //Revisar fechas
-                boolean revisarFechas = validarFecha(new EditText[]{fechaInicio, fechaDevolucion});
+                boolean revisarFechas = validarFecha(new EditText[]{fechaInicio, fechaDevolucion, horaInicio, horaDevolucion});
 
                 if (camposLlenos && revisarFechas) {
                     String newfechaInicio = fechaInicio.getText().toString();
@@ -202,42 +202,38 @@ public class SearchActivity extends AppCompatActivity implements AdapterView.OnI
     private boolean validarFecha(EditText[] editTexts){
         EditText fechaInicio = editTexts[0];
         EditText fechaFin = editTexts[1];
+        EditText horaInicial = editTexts[2];
+        EditText horaFinal = editTexts[3];
 
         if(!fechaInicio.getText().toString().equals("") && !fechaFin.getText().toString().equals("")){
             String fInicial = fechaInicio.getText().toString();
             String fFin = fechaFin.getText().toString();
+            String hInicial = horaInicial.getText().toString();
+            String hFin = horaFinal.getText().toString();
+
             int diaIni = Integer.parseInt(fInicial.substring(0,2));
             int diaFin = Integer.parseInt(fFin.substring(0,2));
             int mesIni = Integer.parseInt(fInicial.substring(3,5));
             int mesFin = Integer.parseInt(fFin.substring(3,5));
             int añoIni = Integer.parseInt(fInicial.substring(6,10));
             int añoFin = Integer.parseInt(fFin.substring(6,10));
+            int horaIni = Integer.parseInt(hInicial.substring(0,2));
+            int horaFin = Integer.parseInt(hFin.substring(0,2));
+            int minIni = Integer.parseInt(hInicial.substring(3,5));
+            int minFin = Integer.parseInt(hFin.substring(3,5));
 
-            if (diaIni>diaFin && mesIni==mesFin && añoIni==añoFin){
-                Toast.makeText(this, "Revise la fecha inicial", Toast.LENGTH_SHORT).show();
+            if ((diaIni>diaFin && mesIni==mesFin && añoIni==añoFin) || (diaIni>diaFin && mesIni>mesFin && añoIni==añoFin) || (diaIni>diaFin && mesIni>mesFin && añoIni>añoFin) ||(diaIni==diaFin && mesIni>mesFin && añoIni>añoFin) || (diaIni==diaFin && mesIni==mesFin && añoIni>añoFin)){
+                Toast.makeText(this, "Revise la fecha", Toast.LENGTH_SHORT).show();
                 //INCORRECTA
                 return false;
             }
-            if (diaIni>diaFin && mesIni>mesFin && añoIni==añoFin){
-                Toast.makeText(this, "Revise la fecha inicial", Toast.LENGTH_SHORT).show();
-                //INCORRECTA
+
+            if((horaIni>horaFin) || (horaIni==horaFin && minIni>minFin)){
+                Toast.makeText(this, "Revise la hora", Toast.LENGTH_SHORT).show();
                 return false;
             }
-            if (diaIni>diaFin && mesIni>mesFin && añoIni>añoFin){
-                Toast.makeText(this, "Revise la fecha inicial", Toast.LENGTH_SHORT).show();
-                //INCORRECTA
-                return false;
-            }
-            if (diaIni==diaFin && mesIni>mesFin && añoIni>añoFin){
-                Toast.makeText(this, "Revise la fecha inicial", Toast.LENGTH_SHORT).show();
-                //INCORRECTA
-                return false;
-            }
-            if (diaIni==diaFin && mesIni==mesFin && añoIni>añoFin){
-                Toast.makeText(this, "Revise la fecha inicial", Toast.LENGTH_SHORT).show();
-                //INCORRECTA
-                return false;
-            }
+
+
         }else{
             return false;
         }
